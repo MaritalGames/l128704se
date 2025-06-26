@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <title>library</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"/>
+  </head>
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  list-style: none;
+  font-family: tajawal, sans-serif;
+}
+
+:root {
+  --text: black;
+  --a-back: black;
+  --co-header: rgb(255, 255, 255);
+  --hover: rgb(222, 147, 7);
+  --co-hover-div: white;
+  --shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+  --c-second: rgb(129, 129, 129);
+  --c-second-icon: rgb(86, 86, 86);
+}
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+#icon-menu {
+  display: none;
+}
+
+/* start  header */
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 100px;
+  transition: all 0.3s ease;
+}
+
+.icons h1 {
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.logo img {
+  height: 80px;
+  filter: brightness(1.1) contrast(1.1);
+}
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav.active {
+  left: 2rem;
+  transition: 0.4s linear;
+}
+a {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: #ffd700;
+  transform: translateY(-2px);
+}
+.icons {
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+}
+.icons div {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: white;
+}
+.icons div:hover {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* تنسيق خاص لأيقونة التواصل في شريط التنقل */
+#icon-contact:hover {
+  color: #ff6600 !important;
+  background: rgba(255, 102, 0, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3) !important;
+}
+
+/*  start search */
+header form {
+  position: absolute;
+  top: 110%;
+  left: -1000%;
+  height: 4rem;
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+header form.active {
+  left: 2rem;
+  transition: 0.4s linear;
+}
+header form input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  text-transform: none;
+}
+header form label i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.2rem;
+  padding-right: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+header form label i:hover {
+  color: var(--hover);
+}
+
+/* start user */
+header .user {
+  position: absolute;
+  top: 110%;
+  left: -1000%;
+  height: 320px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.user.active {
+  left: 2rem;
+  transition: 0.4s linear;
+}
+
+.user input {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  background-color: rgb(234, 233, 233);
+  padding: 0 20px;
+}
+
+.user h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.user h6 {
+  font-size: 13px;
+  margin-top: 10px;
+}
+.user h6 span a {
+  font-size: 13px;
+  color: var(--hover);
+  text-decoration: none;
+}
+.user button {
+  margin-top: 10px;
+  width: 50%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: white;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: bold;
+  border: 3px solid var(--text);
+  cursor: pointer;
+}
+.user button:hover {
+  background-color: var(--hover);
+  color: white;
+}
+
+/* تنسيق أيقونات التواصل الاجتماعي */
+.social-login {
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.social-login p {
+  font-size: 12px;
+  color: var(--c-second);
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.whatsapp-btn, .telegram-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border-color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.telegram-btn {
+  background: linear-gradient(135deg, #0088cc, #229ED9);
+  color: white;
+  border-color: #0088cc;
+}
+
+.telegram-btn:hover {
+  background: linear-gradient(135deg, #229ED9, #0088cc);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+}
+
+.social-icons i {
+  font-size: 16px;
+}
+
+/*start main */
+section {
+  padding: 2rem 9%;
+}
+section.main {
+  padding-top: 120px;
+}
+
+.main {
+  background: url(img/bac.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+.main h1 {
+  font-size: 60px;
+  margin: 10% 0 1% 0;
+}
+.main h1 span {
+  color: rgb(222, 147, 7);
+  font-size: 60px;
+}
+.main p {
+  text-align: center;
+  font-size: 20px;
+}
+.main button {
+  font-size: 20px;
+  margin-top: 15px;
+  padding: 10px 30px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0, 0.3);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.main button:hover {
+  background-color: rgb(222, 147, 7);
+  color: white;
+  border: 2px solid rgb(222, 147, 7);
+}
+
+/* تحسين عرض الكروت - إزالة النصوص وتكبير الصور */
+.card {
+  position: relative;
+  border-radius: 5px;
+  width: 180px;
+  height: 280px; /* تقليل الارتفاع لأن النص محذوف */
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .img {
+  width: 100%;
+  height: 220px; /* زيادة حجم الصورة */
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+.card .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .img img {
+  transform: scale(1.05);
+}
+
+/* إخفاء النصوص تحت الصور */
+.card .content {
+  display: none;
+}
+
+.card .footer {
+  position: absolute;
+  background-color: rgba(224, 224, 224, 0.95);
+  backdrop-filter: blur(5px);
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.card .footer i {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.card .footer i:hover {
+  color: var(--hover);
+}
+
+/* تنسيق النجوم الذهبية */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.star {
+  color: #ffd700;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.star:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* start new-books */
+.new-books {
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  place-items: center;
+  text-align: center;
+}
+
+.new-books .cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.new-books a {
+  background-color: var(--hover);
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 85%;
+  text-align: center;
+}
+
+.new-books h1 {
+  position: relative;
+  display: inline-block;
+}
+.new-books h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 60px;
+  background-color: #ff6600;
+  border-radius: 4px;
+}
+
+/* start best-seller */
+.best-seller {
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  place-items: center;
+  text-align: center;
+}
+
+.best-seller .cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.best-seller a {
+  background-color: var(--hover);
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 85%;
+}
+
+.best-seller h1 {
+  position: relative;
+  display: inline-block;
+}
+.best-seller h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 60px;
+  background-color: #ff6600;
+  border-radius: 4px;
+}
+
+/* start Price-offers */
+.Price-offers {
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  place-items: center;
+  text-align: center;
+}
+
+.Price-offers .cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Price-offers .footer .price::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  right: 80px;
+  left: 45%;
+  transform: rotate(-40deg);
+  height: 5px;
+  width: 30px;
+  background-color: #ff6600;
+}
+.Price-offers a {
+  background-color: var(--hover);
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 85%;
+}
+
+.Price-offers h1 {
+  position: relative;
+  display: inline-block;
+}
+.Price-offers h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 60px;
+  background-color: #ff6600;
+  border-radius: 4px;
+}
+
+/*  stat accessories*/
+.accessories {
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  place-items: center;
+  text-align: center;
+}
+
+.accessories .cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.accessories a {
+  background-color: var(--hover);
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 85%;
+}
+
+.accessories h1 {
+  position: relative;
+  display: inline-block;
+}
+.accessories h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 60px;
+  background-color: #ff6600;
+  border-radius: 4px;
+}
+
+/* allCards */
+.allCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+/* start main-footer */
+.main-footer {
+  background: #222;
+  color: #fff;
+  padding: 40px;
+  margin-top: 40px;
+  font-size: 1.1rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contact a {
+  color: white;
+}
+
+.contact a:hover {
+  color: var(--hover);
+}
+.footer-links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.footer-links-container a {
+  color: white;
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+.footer-links-container a:hover {
+  color: var(--hover);
+}
+
+/* تحسينات الاستجابة */
+@media (max-width: 991px) {
+  section.main {
+    padding-top: 140px;
+  }
+  html {
+    font-size: 55%;
+  }
+
+  header {
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+  }
+
+  header .search-form {
+    width: 80%;
+    height: 50%;
+  }
+
+  header form input {
+    font-size: 2rem;
+  }
+
+  header form label i {
+    font-size: 3rem;
+  }
+
+  #icon-menu {
+    display: inline-block;
+  }
+
+  /* nav */
+  header nav {
+    position: absolute;
+    top: 110%;
+    left: -100%;
+    box-shadow: var(--shadow);
+    width: 30rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header nav a {
+    font-size: 2rem;
+    margin: 1rem 2.5rem;
+    padding: 10px;
+  }
+
+  /* main */
+  .main h1 {
+    font-size: 50px;
+    margin: 10% 0 1% 0;
+  }
+
+  /*cards  */
+  .card {
+    width: 180px;
+    height: 260px;
+  }
+
+  .card .img {
+    height: 200px;
+  }
+
+  .new-books h1 {
+    font-size: 25px;
+  }
+  .best-seller h1 {
+    font-size: 25px;
+  }
+  .Price-offers h1 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  section.main {
+    padding-top: 160px;
+  }
+
+  header .search-form {
+    width: 80%;
+    height: 50%;
+  }
+
+  header form input {
+    font-size: 2rem;
+  }
+
+  header form label i {
+    font-size: 3rem;
+  }
+
+  #icon-menu {
+    display: inline-block;
+  }
+
+  /* nav */
+  header nav {
+    position: absolute;
+    top: 110%;
+    left: -100%;
+    box-shadow: var(--shadow);
+    width: 30rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header nav a {
+    font-size: 2rem;
+    margin: 1rem 2.5rem;
+    padding: 10px;
+  }
+
+  /* main */
+  .main h1 {
+    font-size: 40px;
+    margin: 10% 0 1% 0;
+  }
+
+  .main h1 span {
+    color: rgb(222, 147, 7);
+    font-size: 40px;
+  }
+  .main p {
+    text-align: center;
+    font-size: 15px;
+  }
+  .main button {
+    font-size: 15px;
+    margin-top: 15px;
+    padding: 10px 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .allCard {
+    gap: 15px;
+    padding: 20px 0;
+  }
+  
+  .card {
+    width: 140px;
+    height: 220px;
+  }
+  
+  .card .img {
+    height: 160px;
+  }
+  
+  .card .footer {
+    font-size: 15px;
+    padding: 7px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* تحسينات الأداء */
+.card .img img {
+  loading: lazy;
+}
+
+/* تحسين الانتقالات */
+* {
+  transition: all 0.3s ease;
+}
+
+/* تحسين الخطوط */
+@font-face {
+  font-family: 'Tajawal';
+  font-display: swap;
+}
+</style>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="" />
+      </div>
+      <nav class="nav">
+        <a href="#main">الرئيسية</a>
+        <a href="#new-books">ذكر</a>
+        <a href="#Price-offers">انثى</a>
+        <a href="#accessories">دمية </a>
+      </nav>
+      <div class="icons">
+        <div id="icon-menu"><i class="bx bx-menu"></i></div>
+        <div id="icon-search"><i class="bx bx-search-alt-2"></i></div>
+        <div id="icon-contact"><i class="bx bx-phone"></i></div>
+        <div id="icon-user"><i class="bx bxs-user"></i></div>
+      </div>
+
+      <!-- form  search -->
+      <form action="" class="search-form">
+        <input
+          type="text"
+          placeholder="ابحث عن المنتج"
+          class="search"
+          id="search"
+        />
+        <label for="search"><i class="bx bx-search-alt-2"></i></label>
+      </form>
+
+      <!--start user -->
+      <div class="user">
+        <h3>تسجيل الدخول</h3>
+        <input type="email" placeholder="ادخل الإيميل" id="email" />
+        <input type="password" placeholder="ادخل الرمز" id="password" />
+        <h6>
+          لا يوجد لديك حساب <span><a href="#">سجل الأن</a></span>
+        </h6>
+        <button onclick="login()">الدخول</button>
+      </div>
+    </header>
+
+    <section class="main" id="main">
+      <h1> <span> العاب جنسية</span></h1>
+      <p></p>
+      <button>أشتري الان</button>
+    </section>
+
+    <section class="new-books" id="new-books">
+      <h1>أحدث الالعاب</h1>
+      <div class="cards">
+        <!-- start card-->
+        <div class="card">
+          <div class="img"><img src="a.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="b.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="img"><img src="s.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="k.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="img"><img src="c.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="d.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="mn.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="z.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="v.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="nm.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+       
+      
+
+
+    <section class="Price-offers" id="Price-offers">
+      <h1>انثي</h1>
+      <div class="cards">
+        <div class="card">
+          <div class="img"><img src="as.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+         <div class="card">
+          <div class="img"><img src="ls.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+         <div class="card">
+          <div class="img"><img src="bs.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="img"><img src="ps.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="ds.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="vs.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="es.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="ks.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="xs.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="lj.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="img"><img src="yn.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="img"><img src="ms.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="accessories" id="accessories">
+      <h1>دمية</h1>
+      <div class="cards">
+        <div class="card">
+          <div class="img"><img src="xm.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="fm.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="am.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="zm.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="dm.jpg" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="ym.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="pm.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img"><img src="om.png" alt="" loading="lazy" /></div>
+          <div class="footer">
+            <div class="stars">
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+              <i class="bx bxs-star star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="footer-links-container">
+        <a href="#main">الرئيسية</a>
+        <a href="#new-books"> ذكر</a>
+        <a href="#accessories">انثى</a>
+        <a href="#Price-offers">دمية</a>
+      </div>
+
+      <div class="logo">
+        <img src="logo.png" alt="شعار الموقع" style="width: 70px" />
+        <p>   متجر لبيع الادوات الزوجية مع خدمة التوصيل لجميع المحافظات السعودية</p>
+      </div>
+
+      <div class="contact">
+        <p>
+        
+         
+          <a href="https://www.instagram.com/saudi_sex_itemsd?igsh=MWc4ajl5eGYzeHdmag=="><i class="bx bxl-instagram"></i></a>
+          <a href="https://t.me/Sextoysssxxx"><i class="bx bxl-telegram"></i></a>
+        </p>
+
+        <div class="footer-contact">
+          <p>جميع الحقوق محفوظة &copy; 2025</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+
+// search
+const search = document.querySelector(".search-form");
+document.querySelector("#icon-search").onclick = () => {
+    search.classList.toggle("active");
+    user.classList.remove("active");
+    menu.classList.remove("active");
+};
+
+// contact page
+document.querySelector("#icon-contact").onclick = () => {
+    window.location.href = "contact.html";
+};
+
+// user
+const user = document.querySelector(".user");
+document.querySelector("#icon-user").onclick = () => {
+    user.classList.toggle("active");
+    search.classList.remove("active");
+    menu.classList.remove("active");
+};
+
+// menu
+const menu = document.querySelector(".nav");
+document.querySelector("#icon-menu").onclick = () => {
+    menu.classList.toggle("active");
+    search.classList.remove("active");
+    user.classList.remove("active");
+};
+
+window.onscroll = () => {
+    search.classList.remove("active");
+    user.classList.remove("active");
+    menu.classList.remove("active");
+}
+
+// وظيفة تسجيل الدخول المحسنة
+function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // التحقق من صحة البيانات
+    if (!email || !password) {
+        alert('يرجى ملء جميع الحقول');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        alert('يرجى إدخال بريد إلكتروني صحيح');
+        return;
+    }
+    
+    // محاكاة عملية تسجيل الدخول
+    if (email !== "admin@example.com" && password !=="123456") {
+        alert('تم تسجيل الدخول بنجاح!');
+        
+        // إخفاء نافذة تسجيل الدخول
+        user.classList.remove("active");
+        
+        // الانتقال إلى الصفحة الرئيسية (قسم المنتجات)
+        setTimeout(() => {
+            document.getElementById('main').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }, 500);
+        
+        // تغيير أيقونة المستخدم لتظهر أنه مسجل دخول
+        document.querySelector("#icon-user i").className = "bx bxs-user-check";
+        document.querySelector("#icon-user").style.color = "#28a745";
+        
+    } else {
+        alert('بيانات تسجيل الدخول غير صحيحة');
+    }
+}
+
+// وظيفة التحقق من صحة البريد الإلكتروني
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// إضافة إمكانية تسجيل الدخول بالضغط على Enter
+document.getElementById('password').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        login();
+    }
+});
+
+document.getElementById('email').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('password').focus();
+    }
+});
+
+// ScrollReveal محسن للأداء
+ScrollReveal().reveal('.card', {
+    origin: 'bottom',
+    distance: '50px',
+    duration: 1000,
+    delay: 100,
+    easing: 'ease-out',
+    interval: 100,
+    opacity: 0,
+    reset: false,
+    mobile: true
+});
+
+// تحسين الأداء - تأخير تحميل الصور
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+});
+
+// تحسين الأداء - تقليل استخدام الذاكرة
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+    }
+    
+    scrollTimeout = setTimeout(() => {
+        search.classList.remove("active");
+        user.classList.remove("active");
+        menu.classList.remove("active");
+    }, 100);
+});
+
+</script>
+</html>
+
